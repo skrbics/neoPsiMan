@@ -1,3 +1,18 @@
+
+application {
+  config {
+    baseName neopm
+    applicationType monolith
+    packageName rs.neopsi.neopm
+    authenticationType jwt
+    prodDatabaseType postgresql
+    clientFramework angularX
+  }
+  entities *
+  paginate Session, Client with infinite-scroll
+	service all with serviceImpl
+}
+
 entity Client {
 	name String required
     phone String
@@ -41,5 +56,5 @@ relationship OneToMany {
     Client to Session {client}
 }
 
-paginate Session, Client with infinite-scroll
-service all with serviceImpl
+
+
