@@ -1,0 +1,45 @@
+entity Client {
+	name String required
+    phone String
+    email String
+}
+
+entity Address {
+	street String required
+    number String
+}
+
+entity Session {
+	date Date required
+    hours Int required
+    minutes Int required
+    planned Boolean required
+    price Float required
+}
+
+entity Currency {
+	name String required
+}
+
+entity City {
+	name String required
+    code String required
+}
+
+entity Country {
+	name String required
+}
+
+relationship OneToOne {
+	Client{address} to Address
+}
+
+relationship OneToMany {
+    City to Address {city}
+    Country to City {country}
+    Currency to Session {currency}
+    Client to Session {client}
+}
+
+paginate Session, Client with infinite-scroll
+service all with serviceImpl
